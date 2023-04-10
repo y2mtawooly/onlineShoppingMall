@@ -78,7 +78,6 @@ namespace OnlineShoppingMall.Adapters
             }
             catch (Exception exception)
             {
-                throw;
             }
             finally
             {

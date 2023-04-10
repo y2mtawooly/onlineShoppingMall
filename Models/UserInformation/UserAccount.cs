@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Data;
 
 namespace OnlineShoppingMall.Models.UserInformation
 {
@@ -22,5 +22,16 @@ namespace OnlineShoppingMall.Models.UserInformation
         public string AddBy { get; set; }
         public DateTime UpdateDate { get; set; } = DateTime.Now;
         public string UpdateBy { get; set; }
+
+        public UserAccount()
+        {
+        }
+
+        public UserAccount(DataRow row)
+        {
+            Id = int.Parse(row[0].ToString());
+            UserId = row[1].ToString();
+            Password = row[2].ToString();
+        }
     }
 }

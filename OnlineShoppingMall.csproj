@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\Core\OnlineShoppingMallAdapter.cs" />
+    <Compile Include="Adapters\HomeAdapter.cs" />
     <Compile Include="Adapters\LoginAdapter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Models\UserInformation\UserInfo.cs" />
     <Compile Include="Models\UserInformation\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HomeService.cs" />
     <Compile Include="Services\LoginService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +198,7 @@
     <Content Include="Views\Login\FindedPassword.cshtml" />
     <Content Include="Views\Login\UserAccount.cshtml" />
     <Content Include="Views\Login\UserAccountInfo.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

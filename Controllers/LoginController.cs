@@ -14,9 +14,10 @@ namespace OnlineShoppingMall.Controllers
 
         public ActionResult Index()
         {
-            var result = Service.GetAllData();
-            return View(result);
+            return View();
         }
+
+        
 
         [HttpPost]
         public ActionResult UserAccount(FormCollection form)
@@ -39,6 +40,7 @@ namespace OnlineShoppingMall.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult AddUserAccountInfo(UserInfo userInfo)
         {
             var result = Service.AddUserAccountInfo(userInfo);
