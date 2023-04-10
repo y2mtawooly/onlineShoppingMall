@@ -35,4 +35,3 @@ namespace OnlineShoppingMall.Models.Good
         public string UpdateBy { get { return updateBy; } }
     }
 }
-}

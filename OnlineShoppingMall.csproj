@@ -117,10 +117,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\Core\OnlineShoppingMallAdapter.cs" />
+    <Compile Include="Adapters\LoginAdapter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data\OnlineShopping.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +140,7 @@
     <Compile Include="Models\UserInformation\UserInfo.cs" />
     <Compile Include="Models\UserInformation\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LoginService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -185,6 +189,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\FindId.cshtml" />
+    <Content Include="Views\Login\FindedId.cshtml" />
+    <Content Include="Views\Login\FindPassword.cshtml" />
+    <Content Include="Views\Login\FindedPassword.cshtml" />
+    <Content Include="Views\Login\UserAccount.cshtml" />
+    <Content Include="Views\Login\UserAccountInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

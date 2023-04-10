@@ -16,6 +16,7 @@ namespace OnlineShoppingMall.Models.Cart
         private string addBy;
         private string updateBy;
 
+
         public int Id { get { return id; } }
         private int UserAccountId { get { return userAccountId; } }
         private int GoodsId { get { return goodsId; } }

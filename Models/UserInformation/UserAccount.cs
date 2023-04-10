@@ -15,12 +15,12 @@ namespace OnlineShoppingMall.Models.UserInformation
 
 
         //get은 받는거. set은 외부에서 설정할 수 있게하는거.
-        public int Id { get { return id; } }
-        public string UserId { get { return userId; } }
-        public string Password { get { return password; } }
-        public DateTime AddDate { get { return addDate; } }
-        public string AddBy { get { return addBy; } }
-        public DateTime UpdateDate { get; } = DateTime.Now;
-        public string UpdateBy { get { return updateBy; } }
+        public int Id {  get; set; }
+        public string UserId { get; set; }
+        public string Password { get; set; }
+        public DateTime AddDate { get; set; } = DateTime.Now;
+        public string AddBy { get; set; }
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
+        public string UpdateBy { get; set; }
     }
 }

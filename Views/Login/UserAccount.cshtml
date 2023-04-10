@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form method="post" action="@Url.Action("UserAccount", "Login")" enctype="multipart/form-data">
+        <div>
+            <label>ID</label>
+            <input type="text" name="userId"/>
+
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password"/>
+
+            <label for="password-confirm">パスワード再確認</label>
+            <input type="password" id="password-confirm" oninput="checkPassword()" />
+
+            <label id="password-match"></label>
+        </div>
+        <button type="submit">次へ</button>
+    </form>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            const passwordConfirm = document.getElementById("password-confirm").value;
+            const matchMessage = document.getElementById("password-match");
+
+            if (password === passwordConfirm) {
+                matchMessage.textContent = "一致します！";
+            } else {
+                matchMessage.textContent = "一致しません。";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form method="post" action="@Url.Action("AddUserAccountInfo", "Login")">
+
+        <label>ID</label>
+        <input type="text" name="id" />
+
+        <label>氏名</label>
+        <input type="text" name="name" />
+
+        <label>生年月日</label>
+        <input type="date" placeholder="生年月日" name="birth" />
+
+        <label>性別</label>
+        <input type="text" name="gender" />
+
+        <label>メールアドレス</label>
+        <input type="text" name="email" />
+
+        <label>携帯電話</label>
+        <input type="text" name="phoneNumber" />
+
+        <label>郵便番号</label>
+        <input type="text" name="postNumber" />
+
+        <label>都道府県</label>
+        <input type="text" name="address" />
+
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>
