@@ -6,13 +6,6 @@ namespace OnlineShoppingMall.Models.UserInformation
     public class UserAccount
     {
 
-        private int id;
-        private string userId;
-        private string password;
-        private DateTime addDate;
-        private string addBy;
-        private string updateBy;
-
 
         //get은 받는거. set은 외부에서 설정할 수 있게하는거.
         public int Id {  get; set; }

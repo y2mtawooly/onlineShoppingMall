@@ -1,31 +1,79 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="~/Content/CSS/Display.css">
+    <link rel="stylesheet" href="~/Content/CSS/Style.css">
+</head>
+<body>
+    <div>
+        <div>
+            <label>カテゴリーメニュー</label>
+            <ul>
+                <li>服</li>
+                <li>アウター</li>
+                <li>ズボン</li>
+                <li>靴</li>
+            </ul>
+        </div>
+        <form method="post" action="@Url.Action("FindedPassword", "Login")" enctype="multipart/form-data">
+            <div class="aligned_center">
+                <input type="text" placeholder="検索" />
+                <button type="submit">🔍</button>
+            </div>
+        </form>
+    </div>
+    <div class="aligned_left_bottom">
+        <button id="back-to-top-btn">↑Top</button>
+    </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <form method="post" action="@Url.Action("DetailGoodsInfo", "Home")" enctype="multipart/form-data">
+        <table style="margin: 50px auto;">
+            <tbody id="tableBody">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                <tr>
+
+                    @foreach (var item in Model.Rows)
+                    {
+                        <th style="padding: 20px;">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <input type="text" name="goodsId" value="@item["Id"]" />
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            이미지
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <button type="submit">@item["Name"]</button>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @item["Price"]
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </th>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+
+    <div class="aligned_center_bottom">
+        <button onclick="window.location.href='https://localhost:44376/Home/Index'">１</button>
+        <button onclick="window.location.href='https://localhost:44376/Home/Index'">２</button>
+        <button onclick="window.location.href='https://localhost:44376/Home/Index'">３</button>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+</body>
+</html >

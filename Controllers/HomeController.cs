@@ -1,7 +1,6 @@
 ﻿using OnlineShoppingMall.Models.UserInformation;
 using OnlineShoppingMall.Services;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 
 namespace OnlineShoppingMall.Controllers
 {
@@ -12,7 +11,8 @@ namespace OnlineShoppingMall.Controllers
         private HomeService Service { get { if (homeService == null) { homeService = new HomeService(); } return homeService; } }
         public ActionResult Index()
         {
-            return View();
+            var data = Service.GetAllData();
+            return View(data);
         }
 
         [HttpPost]
@@ -26,14 +26,10 @@ namespace OnlineShoppingMall.Controllers
             userAccount.UserId = userId;
             userAccount.Password = password;
 
-            var result = Service.Login(userAccount);
+            var message = Service.Login(userAccount);
 
-            if (result == null)
-            {
-                ViewBag.Message = "IDまたはパスワードをもう一度確認してください。";
-                return View();
-            }
-            else { return View("Index"); }
+            ViewBag.Message = message;
+            return View();
         }
 
 
@@ -49,6 +45,25 @@ namespace OnlineShoppingMall.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult DetailGoodsInfo(FormCollection form)
+        {
+            string goodsId = form["goodsId"];
+
+            var data = Service.DetailGoodsInfo(goodsId);
+
+            return View(data);
+        }
+
+        public ActionResult Cart(FormCollection form)
+        {
+            string goodsId = form["goodsId"];
+
+            var data = Service.Cart(goodsId);
+
+            return View(data);
         }
     }
 }

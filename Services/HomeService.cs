@@ -13,8 +13,14 @@ namespace OnlineShoppingMall.Services
 
         private HomeAdapter Adapter { get { if (homeAdapter == null) { homeAdapter = new HomeAdapter(); } return homeAdapter; } }
 
-        
-        public DataTable Login(UserAccount userAccount)
+        public DataTable GetAllData()
+        {
+            DataTable dataTable = Adapter.GetDataByAll();
+
+            return dataTable;
+        }
+
+        public string Login(UserAccount userAccount)
         {
             var dataTable = Adapter.Login(userAccount);
 
@@ -28,13 +34,27 @@ namespace OnlineShoppingMall.Services
 
             if (count != 0)
             {
-                return dataTable;
+                var message = data[0].Id.ToString();
+                return message;
             }
             else
             {
-                return null;
+                var message = "IDまたはパスワードを再確認してください。";
+                return message;
             }
             
+        }
+
+        public DataTable DetailGoodsInfo(string goodsId)
+        {
+            return Adapter.DetailGoodsInfo(goodsId);
+
+        }
+
+        public DataTable Cart(string goodsId)
+        {
+            return Adapter.Cart(goodsId);
+
         }
     }
 }

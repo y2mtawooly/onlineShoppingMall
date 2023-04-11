@@ -6,15 +6,6 @@ namespace OnlineShoppingMall.Models.User
 {
     public class UserInfo
     {
-        private string id;
-        private string name;
-        private DateTime birth;
-        private string gender;
-        private string email;
-        private string phoneNumber;
-        private string postNumber;
-        private string address;
-        private DateTime addDate;
 
         public string Id { get; set; }
         public string Name { get; set; }
@@ -32,16 +23,16 @@ namespace OnlineShoppingMall.Models.User
         }
         public UserInfo(DataRow row)
         {
-            id = row[0].ToString();
-            name = row[1].ToString();
-            birth = DateTime.Parse(row[2].ToString());
-            Gender = row[3].ToString();
-            Email = row[4].ToString();
-            PhoneNumber = row[5].ToString();
-            PostNumber = row[6].ToString();
-            Address = row[7].ToString();
-            AddDate = DateTime.Parse(row[8].ToString());
-            UpdateDate = DateTime.Parse(row[9].ToString());
+            Id = row["Id"].ToString();
+            Name = row["Name"].ToString();
+            Birth = DateTime.Parse(row["Birth"].ToString());
+            Gender = row["Gender"].ToString();
+            Email = row["Email"].ToString();
+            PhoneNumber = row["PhoneNumber"].ToString();
+            PostNumber = row["PostNumber"].ToString();
+            Address = row["Address"].ToString();
+            AddDate = DateTime.Parse(row["AddDate"].ToString());
+            UpdateDate = DateTime.Parse(row["UpdateDate"].ToString());
         }
 
         

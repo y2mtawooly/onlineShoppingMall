@@ -87,7 +87,6 @@ namespace OnlineShoppingMall.Adapters
             return data;
         }
 
-
         public DataTable AddUserAccountInfo(UserInfo userInfo)
         {
             DataTable data = new DataTable();
@@ -140,6 +139,80 @@ namespace OnlineShoppingMall.Adapters
             finally
             {
                 // データベースの接続終了
+                Connection.Close();
+            }
+            return data;
+        }
+
+        public DataTable FindId(UserInfo userInfo)
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (var command = Connection.CreateCommand())
+                {
+                    string name = userInfo.Name;
+                    DateTime birth = userInfo.Birth;
+
+                    Connection.Open();
+                    var createQuary = command.CommandText;
+                    // SQLの設定
+                    command.CommandText = "SELECT * FROM UserInfo WHERE [Name] = @param1 AND [Birth] = @param2 ;";
+                    
+                    // SQLの実行
+                    command.Parameters.AddWithValue("@param1", name);
+                    command.Parameters.AddWithValue("@param2", birth);
+
+                    //command.ExecuteNonQuery();
+
+                    var adapter = new SqlDataAdapter(command);
+                    adapter.Fill(data);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
+            finally
+            {
+                // データベースの接続終了 
+                Connection.Close();
+            }
+            return data;
+        }
+
+
+
+        public DataTable FindPassword(string id)
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (var command = Connection.CreateCommand())
+                {
+                    string userId = id;
+
+                    Connection.Open();
+                    var createQuary = command.CommandText;
+                    // SQLの設定
+                    command.CommandText = "SELECT * FROM Account WHERE [UserId] = @param1;";
+
+                    // SQLの実行
+                    command.Parameters.AddWithValue("@param1", userId);
+
+                    //command.ExecuteNonQuery();
+
+                    var adapter = new SqlDataAdapter(command);
+                    adapter.Fill(data);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
+            finally
+            {
+                // データベースの接続終了 
                 Connection.Close();
             }
             return data;

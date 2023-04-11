@@ -1,43 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - マイ ASP.NET アプリケーション</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - Tawooly's Online Shopping Mall</title>
+    <link rel="stylesheet" href="~/Content/CSS/Layout.css">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="その他のオプション">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("アプリケーション名", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("ホーム", "Index", "Home")</li>
-                    <li>@Html.ActionLink("詳細", "About", "Home")</li>
-                    <li>@Html.ActionLink("問い合わせ", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div class="title_bar">
+        <div>
+            <label class="home_font">
+                @Html.ActionLink("Tawooly's Online Shopping Mall", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </label>
+        </div>
+        <div>
+            <ul class="layout_ul">
+                <li class="layout_li">@Html.ActionLink("ログイン", "Index", "Login")</li>
+                <li class="layout_li">@Html.ActionLink("会員登録", "UserAccountInfo", "Login")</li>
+                <li class="cart_font">@Html.ActionLink("🛒", "Cart", "Home")</li>
+            </ul>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - マイ ASP.NET アプリケーション</p>
+            <hr />
+            <p>&copy; @DateTime.Now.Year - Tawooly's Online Shopping Mall</p>
+            <h3>@ViewBag.Message</h3>
+            <hr />
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

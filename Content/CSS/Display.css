@@ -1,0 +1,44 @@
+﻿
+/*옆으로 정렬*/
+.aligned_sideways {
+    display: flex;
+}
+
+/*중앙*/
+.aligned_center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+/*중앙맨아래*/
+.aligned_center_bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 10%;
+}
+
+/*맨왼쪽*/
+.aligned_left {
+    position: absolute;
+    left: 10%;
+    top: 400px;
+}
+
+/*맨오른쪽아래*/
+.aligned_left_bottom {
+    position: absolute;
+    right: 0;
+    bottom: 30%;
+}
+
+/*맨오른쪽*/
+.aligned_right {
+    position: absolute;
+    right: 10%;
+}
+
+/*--------------------------------------------------------------------*/

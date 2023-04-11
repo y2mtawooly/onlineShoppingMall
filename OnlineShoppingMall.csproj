@@ -134,7 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart\Cart.cs" />
-    <Compile Include="Models\Good\Good.cs" />
+    <Compile Include="Models\Goods\Goods.cs" />
     <Compile Include="Models\Sale\Sale.cs" />
     <Compile Include="Models\Tax\ConsumptionTax.cs" />
     <Compile Include="Models\UserInformation\PlaceOfDelivery .cs" />
@@ -145,14 +145,19 @@
     <Compile Include="Services\LoginService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\BootStrap\bootstrap-theme.css" />
+    <Content Include="Content\BootStrap\bootstrap-theme.min.css" />
+    <Content Include="Content\BootStrap\bootstrap.css" />
+    <Content Include="Content\BootStrap\bootstrap.min.css" />
+    <Content Include="Content\CSS\Style.css" />
+    <Content Include="Content\CSS\Layout.css" />
+    <Content Include="Content\CSS\Display.css" />
+    <Content Include="Content\JavaScript\CartJavaScript.js" />
+    <Content Include="Content\JavaScript\HomeJavaScript.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\BootStrap\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Data\OnlineShopping.xsc">
@@ -199,6 +204,8 @@
     <Content Include="Views\Login\UserAccount.cshtml" />
     <Content Include="Views\Login\UserAccountInfo.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\DetailGoodsInfo.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -208,10 +215,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\BootStrap\bootstrap.min.css.map" />
+    <Content Include="Content\BootStrap\bootstrap.css.map" />
+    <Content Include="Content\BootStrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\BootStrap\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

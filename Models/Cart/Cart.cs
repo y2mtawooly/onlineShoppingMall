@@ -17,14 +17,14 @@ namespace OnlineShoppingMall.Models.Cart
         private string updateBy;
 
 
-        public int Id { get { return id; } }
-        private int UserAccountId { get { return userAccountId; } }
-        private int GoodsId { get { return goodsId; } }
-        private int SaleId { get { return saleId; } }
-        private int ConsumptionTaxId { get { return consumptionTaxId; } }
-        public DateTime AddDate { get { return addDate; } }
-        public string AddBy { get { return addBy; } }
+        public int Id { get; set; }
+        public int UserAccountId { get; set; }
+        public int GoodsId { get; set; }
+        public int SaleId { get; set; }
+        public int ConsumptionTaxId { get; set; }
+        public DateTime AddDate { get; } = DateTime.Now;
+        public string AddBy { get; set; }
         public DateTime UpdateDate { get; } = DateTime.Now;
-        public string UpdateBy { get { return updateBy; } }
+        public string UpdateBy { get; set; }
     }
 }

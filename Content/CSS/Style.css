@@ -1,0 +1,54 @@
+﻿.category_title {
+    width: 350px;
+    height: 70px;
+    padding: 7%;
+    margin: 800px auto auto auto;
+    text-align: center;
+    background-color: darkgray;
+}
+
+.cart_table {
+    margin: 5% auto auto auto ;
+    border:double;
+}
+
+th {
+    width: 400px;
+    height: 50px;
+    text-align: center;
+}
+
+td {
+    margin: 10px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+.total_amount{
+    margin: 3% auto auto 75%;
+}
+
+.hr_length{
+    width: 50%;
+}
+
+.login_margin {
+    margin: 40px auto 0 auto;
+}
+
+.login_text{
+    width: 400px;
+    height: 30px;
+}
+
+.login_button {
+    width: 150px;
+    height: 40px;
+    margin: 40px;
+}
+
+.login_find {
+    margin: auto auto auto 13.5%;
+    font-size: 15px
+}

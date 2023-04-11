@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form method="post" action="@Url.Action("Cart", "Home")" enctype="multipart/form-data">
+
+        @foreach (var item in Model.Rows)
+        {
+            <input id="goodsId" type="text" name="goodsId" value="@item["Id"]" />
+
+            <input id="id" class="selectBox" type="text" name="id" value="イメージ" />
+
+            <div class="inputDiv">
+
+                <label class="titleinput">@item["Name"]</label>
+
+                <p class="writer">値段：</p>
+                <input id="writer" type="text" class="inputWriter" value="@item["Price"]" />
+
+                <label id="date" type="text" class="inputDate">在庫：@item["Stock"]</label>
+            </div>
+
+            <p>商品説明</p>
+            <textarea id="text" class="textinput" placeholder="@item["Explanation"]"></textarea>
+
+            <div class="buttonDiv">
+                <button type="submit">カートに入れる</button>
+            </div>
+        }
+    </form>
+</body>
+</html>

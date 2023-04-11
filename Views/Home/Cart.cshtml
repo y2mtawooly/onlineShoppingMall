@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="~/Content/CSS/Style.css">
+    <script src="~/Content/JavaScript/CartJavaScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+    @foreach (var item in Model.Rows)
+    {
+        <form method="post" action="@Url.Action("Cart", "Home")" enctype="multipart/form-data">
+            <table class="cart_table">
+                <thead>
+                    <tr class="cart_table">
+                        <th><input type="checkbox">  全て選択</th>
+                        <th>商品名</th>
+                        <th>数量</th>
+                        <th>金額</th>
+                        <th>消費税</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><input type="checkbox"></td>
+
+                        <td>@item["Name"]</td>
+
+                        <td>
+                            <select id="count" onchange="countUpdate(this, @item["Price"], 'total')">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+
+                        <td id="price">@item["Price"] <label>円</label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <div class="total_amount">
+            <label>小計（</label>
+            <label></label>
+            <label>個の商品）（税込み）：</label>
+            <label id="total">@item["Price"]</label>
+            <label>円</label>
+        </div>
+    }
+</body>
+</html>

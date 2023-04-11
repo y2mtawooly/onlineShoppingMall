@@ -2,7 +2,9 @@
 using OnlineShoppingMall.Models.User;
 using OnlineShoppingMall.Models.UserInformation;
 using OnlineShoppingMall.Services;
+using System;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 
 namespace OnlineShoppingMall.Controllers
@@ -17,8 +19,6 @@ namespace OnlineShoppingMall.Controllers
             return View();
         }
 
-        
-
         [HttpPost]
         public ActionResult UserAccount(FormCollection form)
         {
@@ -30,11 +30,12 @@ namespace OnlineShoppingMall.Controllers
             userAccount.UserId = userId;
             userAccount.Password = password;
 
-            var result = Service.AddUserAccount(userAccount);
+            Service.AddUserAccount(userAccount);
 
             return View("Index");
         }
 
+        [HttpPost]
         public ActionResult UserAccountInfo()
         {
             return View();
@@ -48,9 +49,27 @@ namespace OnlineShoppingMall.Controllers
             return View("UserAccount");
         }
 
-
+        
         public ActionResult FindId()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FindedId(FormCollection form)
+        {
+            UserInfo userInfo = new UserInfo();
+
+            var name = form["name"];
+            var birth = DateTime.Parse(form["birth"]);
+
+            userInfo.Name = name;
+            userInfo.Birth = birth;
+
+            var message = Service.FindID(userInfo);
+
+            ViewBag.Message = message;
+
             return View();
         }
 
@@ -59,13 +78,15 @@ namespace OnlineShoppingMall.Controllers
             return View();
         }
 
-        public ActionResult FindedId()
-        {
-            return View();
-        }
 
-        public ActionResult FindedPassword()
+        public ActionResult FindedPassword(FormCollection form)
         {
+            var id = form["userId"];
+
+            var message = Service.FindPassword(id);
+
+            ViewBag.Message = message;
+
             return View();
         }
     }
