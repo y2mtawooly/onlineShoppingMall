@@ -21,7 +21,7 @@ namespace OnlineShoppingMall.Models.Cart
         public int UserAccountId { get; set; }
         public int GoodsId { get; set; }
         public int SaleId { get; set; }
-        public int ConsumptionTaxId { get; set; }
+        public int ConsumptionTaxId { get; } = 0;
         public DateTime AddDate { get; } = DateTime.Now;
         public string AddBy { get; set; }
         public DateTime UpdateDate { get; } = DateTime.Now;

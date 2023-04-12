@@ -1,8 +1,10 @@
 ﻿
 using OnlineShoppingMall.Adapters;
+using OnlineShoppingMall.Models.Cart;
 using OnlineShoppingMall.Models.UserInformation;
 using System.Collections.Generic;
 using System.Data;
+using System.Web.DynamicData;
 using System.Web.Services.Description;
 
 namespace OnlineShoppingMall.Services
@@ -51,9 +53,24 @@ namespace OnlineShoppingMall.Services
 
         }
 
-        public DataTable Cart(string goodsId)
+        public DataTable InsertCart(Cart cart)
         {
-            return Adapter.Cart(goodsId);
+            return Adapter.InsertCart(cart);
+
+        }
+
+        public DataTable Cart(int userId)
+        {
+
+            return Adapter.Cart(userId);
+
+        }
+
+        public DataTable AllDelete()
+        {
+            var dataTable = Adapter.AllDelete();
+
+            return dataTable;
 
         }
     }

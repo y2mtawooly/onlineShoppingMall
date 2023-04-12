@@ -27,9 +27,7 @@ namespace OnlineShoppingMall.Services
 
         public DataTable AddUserAccount(UserAccount userAccount)
         {
-            DataTable dataTable = Adapter.AddUserAccount(userAccount);
-
-            return dataTable;
+            return Adapter.AddUserAccount(userAccount); ;
         }
 
         public DataTable AddUserAccountInfo(UserInfo userInfo)

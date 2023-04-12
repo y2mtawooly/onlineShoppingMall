@@ -1,4 +1,6 @@
-﻿using OnlineShoppingMall.Models.UserInformation;
+﻿using OnlineShoppingMall.Models.Cart;
+using OnlineShoppingMall.Models.Good;
+using OnlineShoppingMall.Models.UserInformation;
 using OnlineShoppingMall.Services;
 using System.Web.Mvc;
 
@@ -29,9 +31,13 @@ namespace OnlineShoppingMall.Controllers
             var message = Service.Login(userAccount);
 
             ViewBag.Message = message;
+
+            Session["Message"] = message;
+
+            string SsssionMessage = (string)Session["Message"];
+
             return View();
         }
-
 
         public ActionResult About()
         {
@@ -57,13 +63,34 @@ namespace OnlineShoppingMall.Controllers
             return View(data);
         }
 
-        public ActionResult Cart(FormCollection form)
+        public ActionResult InsertCart(FormCollection form)
         {
+            Cart cart = new Cart();
+
+            string userId = form["userId"];
             string goodsId = form["goodsId"];
 
-            var data = Service.Cart(goodsId);
+            cart.UserAccountId = int.Parse(userId);
+            cart.GoodsId = int.Parse(goodsId);
+            
+            Service.InsertCart(cart);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Cart()
+        {
+            int userId = 0;
+            var data = Service.Cart(userId);
 
             return View(data);
+        }
+
+        public ActionResult AllDelete ()
+        {
+            Service.AllDelete();
+
+            return RedirectToAction("Cart");
         }
     }
 }

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Tawooly's Online Shopping Mall</title>
     <link rel="stylesheet" href="~/Content/CSS/Layout.css">
+
+    <script src="~/Content/JavaScript/LayoutScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <div class="title_bar">
@@ -17,7 +20,7 @@
         <div>
             <ul class="layout_ul">
                 <li class="layout_li">@Html.ActionLink("ログイン", "Index", "Login")</li>
-                <li class="layout_li">@Html.ActionLink("会員登録", "UserAccountInfo", "Login")</li>
+                <li class="layout_li">@Html.ActionLink("納品", "Index", "Goods")</li>
                 <li class="cart_font">@Html.ActionLink("🛒", "Cart", "Home")</li>
             </ul>
         </div>
@@ -27,7 +30,7 @@
         <footer>
             <hr />
             <p>&copy; @DateTime.Now.Year - Tawooly's Online Shopping Mall</p>
-            <h3>@ViewBag.Message</h3>
+            <h3>@Session["Message"]</h3>
             <hr />
         </footer>
     </div>

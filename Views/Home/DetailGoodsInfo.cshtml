@@ -5,7 +5,9 @@
     <title></title>
 </head>
 <body>
-    <form method="post" action="@Url.Action("Cart", "Home")" enctype="multipart/form-data">
+    <form method="post" action="@Url.Action("InsertCart", "Home")" enctype="multipart/form-data">
+
+        <input id="userId" type="text" name="userId" value="0" />
 
         @foreach (var item in Model.Rows)
         {
