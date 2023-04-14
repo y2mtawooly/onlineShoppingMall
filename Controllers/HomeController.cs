@@ -1,7 +1,7 @@
 ﻿using OnlineShoppingMall.Models.Cart;
-using OnlineShoppingMall.Models.Good;
 using OnlineShoppingMall.Models.UserInformation;
 using OnlineShoppingMall.Services;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace OnlineShoppingMall.Controllers
@@ -17,7 +17,7 @@ namespace OnlineShoppingMall.Controllers
             return View(data);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Login(FormCollection form)
         {
             UserAccount userAccount = new UserAccount();
@@ -53,7 +53,7 @@ namespace OnlineShoppingMall.Controllers
             return View();
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult DetailGoodsInfo(FormCollection form)
         {
             string goodsId = form["goodsId"];
@@ -91,6 +91,12 @@ namespace OnlineShoppingMall.Controllers
             Service.AllDelete();
 
             return RedirectToAction("Cart");
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public string Delete([FromBody] Cart cart)
+        {
+            return Service.Delete(cart);
         }
     }
 }

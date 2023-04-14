@@ -8,67 +8,50 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
-<body onload="totalAmount()">
-
+<body>
     <form method="post" action="@Url.Action("AllDelete", "Home")" enctype="multipart/form-data">
         <table id="tableBody" class="cart_table">
             <thead>
                 <tr class="cart_table">
                     <th><input id="allchecked" type="button" onclick="toggleCheckboxes()" value="全て選択"></th>
-                    <th>商品ID</th>
                     <th>商品名</th>
                     <th>数量</th>
                     <th>金額</th>
+                    <th>消費税</th>
                     <th>合計</th>
+                    <th><button type="submit">選択削除</button></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model.Rows)
-                {
+            @foreach (var item in Model.Rows)
+            {
+                <tbody onload="TaxRate(@item["TaxRate"], @item["Id"])">
                     <tr>
                         <td><input id="checkbox_@item["Id"]" type="checkbox" onclick="updateCheckedCount()"></td>
-
-                        <td><input type="text" value="@item["Id"]"></td>
-
                         <td>@item["Name"]</td>
-
                         <td>
-                            <select onchange="countUpdateAndgetItemId(this, @item["Price"], 'total_@item["Id"]')">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+                            <select id="select_@item["Id"]" onchange="countUpdateAndgetItemId(this, @item["Price"], 'total_@item["Id"]')"></select>
                         </td>
-
                         <td>@item["Price"] <label>円</label></td>
-
-                        <td id="total_@item["Id"]">@item["Price"]</td>
+                        <td><label id="stock">@item["TaxRate"]</label> <label>％</label></td>
+                        <td><label id="total_@item["Id"]">@item["Price"]</label><label>円</label> </td>
+                        <td>
+                            <label id="delete">@item["Id"]</label>
+                            <input id="delete_@item["Id"]" type="text" name="deleteButton" value="@item["Id"]">
+                            <button type="button" onclick="deleteItem('@item["Id"]')">X</button>
+                        </td>
                     </tr>
-                }
-            </tbody>
+                </tbody>
+            }
         </table>
-
-        <div>
-            <label>選択</label>
-            <label>(</label>
-            <label id="checkedCount"></label>
-            <label> / @Model.Rows.Count )</label>
-            <button type="submit">選択削除</button>
-        </div>
+    </form>
 
         <div class="total_amount">
             <label>小計（</label>
-            <label>@Model.Rows.Count</label>
+            <label id="checkedCount"></label>
+            <label> / @Model.Rows.Count )</label>
             <label>個の商品）（税込み）：</label>
-            <label id="total"></label>
+            <label id="total">0</label>
+            <label>円</label>
         </div>
-    </form>
 </body>
 </html>

@@ -1,13 +1,48 @@
 ﻿function totalAmount() {
+
     var table = document.getElementById("tableBody");
     var total = 0;
-    for (let i = 1; i < table.rows.length; i++) {
-        total += parseInt(table.rows[i].cells[4].innerHTML);
+    for (let l = 1; l < table.rows.length; l++) {
+        total += parseInt(table.rows[l].cells[3].innerHTML);
     }
-    document.getElementById("total").innerHTML = total + "円";
+    document.getElementById("total").innerHTML = total;
 }
 
+function TaxRate(stock, deleteNum) {
+    var stockCount =  stock + 1;
+    var table = document.getElementById("tableBody");
+    for (let i = 1; i < table.rows.length; i++) {
+
+        for (var p = 0; p < table.rows.length; p++) {
+
+            var selectId = "select_" + (deleteNum + p); // select 태그의 id 값
+
+            for (var j = 1; j < stockCount; j++) {
+                var select = document.getElementById(selectId);
+                var selectOption = document.createElement("option");
+
+                select.appendChild(selectOption);
+
+                selectOption.value = [j];
+                selectOption.innerHTML = [j];
+            }
+    }
+        
+    }
+}
+
+window.addEventListener("load", function () {
+    var stockValue = document.getElementById("stock").innerHTML;
+    var stock = parseInt(stockValue);
+
+    var deleteId = document.getElementById("delete").innerHTML;
+    var deleteNum = parseInt(deleteId);
+    TaxRate(stock, deleteNum);
+});
+    
+
 function countUpdateAndgetItemId(selectElement, price, totalElementId) {
+
     var count = selectElement.value;
     var total = price * count;
 
@@ -18,9 +53,9 @@ function countUpdateAndgetItemId(selectElement, price, totalElementId) {
     var table = document.getElementById("tableBody");
     var totalAmount = 0;
     for (let i = 1; i < table.rows.length; i++) {
-        totalAmount += parseInt(table.rows[i].cells[5].innerHTML);
+        totalAmount += parseInt(table.rows[i].cells[3].innerHTML);
     }
-    document.getElementById("total").innerHTML = totalAmount + "円";
+    document.getElementById("total").innerHTML = totalAmount;
 }
 
 function updateCheckedCount() {
@@ -62,4 +97,34 @@ function toggleCheckboxes() {
     $('#checkedCount').text(count);
     $('#total').text(total);
     document.getElementById("checkedCount").textContent = shouldCheck ? count : 0;
+}
+
+function deleteItem(itemId) {
+
+    var requestData = {
+        "Id": itemId,
+        "UserAccountIdGoodsId": 0,
+        "SaleId": 0,
+        "ConsumptionTaxId": 0,
+        "AddDate": "",
+        "AddBy": "",
+        "UpdateDate": "",
+        "UpdateBy": ""
+    }
+    var uri = 'Delete';
+    $.ajax({
+        url: uri,
+        method: "POST",
+        data: requestData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(function (r) {
+        var json = JSON.parse(r);
+
+    }, function (e) {
+        alert("error: " + e);
+    });
+
+    $(location).attr("href", "https://localhost:44376/Home/Cart");
 }

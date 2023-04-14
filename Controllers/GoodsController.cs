@@ -20,7 +20,7 @@ namespace OnlineShoppingMall.Controllers
 
         public ActionResult InsertGoodsData(FormCollection form)
         {
-            Goods goods = new Goods();
+            /*Goods goods = new Goods();
 
             string name = form["userId"];
             string explanation = form["password"];
@@ -39,7 +39,7 @@ namespace OnlineShoppingMall.Controllers
             goods.EndDate = DateTime.Parse(endDate);
 
             var data = Service.InsertGoodsData(goods);
-
+*/
             return View();
         }
     }

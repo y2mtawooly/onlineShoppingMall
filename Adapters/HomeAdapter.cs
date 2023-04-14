@@ -173,7 +173,7 @@ namespace OnlineShoppingMall.Adapters
                     Connection.Open();
                     var createQuary = command.CommandText;
                     // SQLの設定
-                    command.CommandText = "SELECT c.Id, c.GoodsId, g.Name, g.Price, g.Stock FROM [dbo].[Cart] c INNER JOIN [dbo].[Goods] g ON c.GoodsId = g.Id WHERE c.UserAccountId = @param1";
+                    command.CommandText = "SELECT c.Id, c.GoodsId, g.Name, g.Price, g.Stock, t.TaxRate FROM [dbo].[Cart] AS c INNER JOIN [dbo].[Goods] g ON c.GoodsId = g.Id INNER JOIN [dbo].[Tax] t ON c.ConsumptionTaxId = t.Id WHERE c.UserAccountId = @param1 AND c.ConsumptionTaxId = 0;";
 
                     // SQLの実行
                     command.Parameters.AddWithValue("@param1", userId);
@@ -190,6 +190,7 @@ namespace OnlineShoppingMall.Adapters
             finally
             {
                 // データベースの接続終了
+                // データベースの接続終了
                 Connection.Close();
             }
             return data;
@@ -204,6 +205,35 @@ namespace OnlineShoppingMall.Adapters
                 {
                     Connection.Open();
                     command.CommandText = "DELETE FROM Cart";
+
+                    var adapter = new SqlDataAdapter(command);
+                    adapter.Fill(data);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
+            finally
+            {
+                // データベースの接続終了
+                Connection.Close();
+            }
+            return data;
+        }
+
+        public DataTable Delete(Cart cart)
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                var deleteId = cart.Id;
+                using (var command = Connection.CreateCommand())
+                {
+                    Connection.Open();
+                    command.CommandText = "DELETE FROM Cart WHERE [Id] = @param1;";
+
+                    command.Parameters.AddWithValue("@param1", deleteId);
 
                     var adapter = new SqlDataAdapter(command);
                     adapter.Fill(data);

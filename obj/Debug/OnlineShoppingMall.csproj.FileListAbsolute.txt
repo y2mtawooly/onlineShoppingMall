@@ -84,3 +84,7 @@ C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\bin\ja\Syst
 C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\obj\Debug\OnlineShoppingMall.csproj.CopyComplete
 C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\obj\Debug\OnlineShoppingMall.dll
 C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\obj\Debug\OnlineShoppingMall.pdb
+C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\bin\System.Net.Http.Formatting.dll
+C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\bin\System.Web.Http.dll
+C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\bin\System.Net.Http.Formatting.xml
+C:\Users\tawoo\Desktop\tawooly_OnlineShoppingMall\onlineShoppingMall\bin\System.Web.Http.xml

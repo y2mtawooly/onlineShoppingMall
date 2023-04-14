@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using OnlineShoppingMall.Adapters;
 using OnlineShoppingMall.Models.Cart;
 using OnlineShoppingMall.Models.UserInformation;
@@ -72,6 +73,21 @@ namespace OnlineShoppingMall.Services
 
             return dataTable;
 
+        }
+
+        public string Delete(Cart cart)
+        {
+            var dataTable = Adapter.Delete(cart);
+
+            var data = new List<Cart>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                data.Add(new Cart(row));
+            }
+
+            string json = JsonConvert.SerializeObject(data);
+
+            return json;
         }
     }
 }
